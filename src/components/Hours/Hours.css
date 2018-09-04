@@ -52,24 +52,24 @@
     color:#dc3545;
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+.Row::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #dc3545;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+.Row:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
    color:    #dc3545;
    opacity:  1;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+.Row::-moz-placeholder { /* Mozilla Firefox 19+ */
    color:    #dc3545;
    opacity:  1;
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.Row:-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #dc3545;
 }
-::-ms-input-placeholder { /* Microsoft Edge */
+.Row::-ms-input-placeholder { /* Microsoft Edge */
    color:    #dc3545;
 }
 
-::placeholder { /* Most modern browsers support this now. */
+.Row::placeholder { /* Most modern browsers support this now. */
    color:    #dc3545;
 }

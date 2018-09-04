@@ -1,108 +1,91 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
+import TableData from './TableData/TableData';
 import classes from './Revenue.css';
 
-const revenue = (props) => {
-    return (
-        <div id='revenue' style={props.style} className={classes.Revenue}>
-            <Grid>
-                <Row>
-                    <Col xs={12}>
-                        <Table striped>
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>%</th>
-                                    <th colSpan="2">Month</th>
-                                    <th colSpan="2">Year</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </Col>
-                    <Col xs={12}>
-                        <Table striped>
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>%</th>
-                                    <th colSpan="2">Month</th>
-                                    <th colSpan="2">Year</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                                <tr>
-                                    <td>$500</td>
-                                    <td>35%</td>
-                                    <td>14</td>
-                                    <td>$7000</td>
-                                    <td>168</td>
-                                    <td>$84000</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-            </Grid>
-        </div>
-    );
+class Revenue extends Component {
+
+    state = {
+        revenueProjection: 0
+    }
+
+    handleRevenueProjection = (event) => {
+        this.setState({revenueProjection: event.target.value}, () => {
+            console.log(this.state.revenueProjection);
+        });
+    }
+
+    render () {
+
+        return (
+            <div id='revenue' style={this.props.style} className={classes.Revenue}>
+                <Grid>
+                    <Row className={classes.row}>
+                        <Col xs={12} sm={12}>
+                            <div className={classes.Projection}>
+                                <h3>Revenue Projection</h3>
+                                <input type="number" value={this.state.revenueProjection} onChange={this.handleRevenueProjection}/>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            <Table striped className={classes.Table}>
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>%</th>
+                                        <th colSpan="2">Month</th>
+                                        <th colSpan="2">Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <TableData />
+                                    <TableData />
+                                    <TableData />
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col xs={12}>
+                            <Table striped className={classes.Table}>
+                                <thead>
+                                    <tr>
+                                        <th>Package</th>
+                                        <th>%</th>
+                                        <th colSpan="2">Month</th>
+                                        <th colSpan="2">Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <TableData />
+                                    <TableData />
+                                    <TableData />
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
+                </Grid>
+            </div>
+        );
+    }
+
 }
 
-export default revenue;
+ 
+// <Col xs={12} sm={6}>
+//     <div className={classes.Membership}>
+//         <h3>Membership</h3>
+//         <table className={classes.MemberTable}>
+//             <tbody>
+//                 <tr>
+//                     <td><input type="text" /></td>
+//                     <td><input type="text" /></td>
+//                     <td><input type="text" /></td>
+//                     <td><input type="text" /></td>
+//                 </tr>
+//             </tbody>
+//         </table>
+//     </div>
+// </Col>
+
+export default Revenue;
