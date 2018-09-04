@@ -1,0 +1,41 @@
+.NavigationItem {
+    display: block;
+    background: #28a745;
+    border-radius: 15px;
+    margin: 5px 10px;
+    color: #FFF;
+    flex-basis: 40%;
+    flex-shrink: 0;
+    flex-grow: 1;
+    line-height: 34px;
+    font-size: 18px;
+}
+
+@media (min-width: 800px) {
+    .NavigationItem {
+        flex-basis: 100px;
+        line-height: 40px;
+        font-size: 28px;
+        margin: 20px 10px;
+    }
+}
+
+.NavigationItem div {
+    background: transparent;
+}
+
+.NavigationItem:nth-child(1) {
+    background: #02375b;
+}
+
+.NavigationItem:nth-child(2) {
+    background: #28a745;
+}
+
+.NavigationItem:nth-child(3) {
+    background: #dc3545;
+}
+
+.NavigationItem:nth-child(4) {
+    background: #000;
+}

@@ -1,0 +1,75 @@
+.Col {
+    padding: 20px 20px;
+}
+
+.Col h1 {
+    font-weight: bold;
+}
+
+.Col div {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.Col input {
+    display: inline-block;
+    width: 35px;
+    border: none;
+    margin-left: 10px;
+    clear: both;
+}
+
+.Col input:hover,
+.Col input:active {
+    border: red;
+}
+
+@media (max-width: 799px) {
+    .Col {
+        padding: 20px 20px;
+    }
+
+    .Col h1 {
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .Col div {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .Col input {
+        display: inline-block;
+        width: 20px;
+        border: none;
+        margin-left: 10px;
+        clear: both;
+    }
+}
+
+.Col span, input {
+    color:#dc3545;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #dc3545;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #dc3545;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #dc3545;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #dc3545;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #dc3545;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    #dc3545;
+}

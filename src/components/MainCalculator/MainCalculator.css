@@ -1,0 +1,47 @@
+.MainContainer {
+    height: 80vh;
+    width: 90%;
+    margin: 0 5%;
+    padding: 0;
+    overflow: auto;
+}
+
+.List {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.List li {
+    list-style: none;
+    font-size: 18px;
+    width: 33.33%;
+    height: 44px;
+    line-height: 44px;
+    display: inline-block;
+    color: white;
+    font-weight: 600;
+}
+
+.List li:nth-child(1) {
+    background: #28a745;
+}
+.List li:nth-child(2){
+    background: #dc3545;
+}
+.List li:nth-child(3) {
+    background: #000;
+}
+
+button {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+}
+
+button:hover, 
+button:focus, 
+button:active, {
+    border: none;
+}

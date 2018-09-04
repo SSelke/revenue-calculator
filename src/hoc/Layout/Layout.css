@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+.Content {
+    margin-top: 180px;
+}
+
+@media (min-width: 800px) {
+    .Content {
+        margin-top: 180px;
+    }
+}
