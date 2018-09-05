@@ -4,6 +4,7 @@ import classes from './TableData.css';
 const tableData = (props) => {
     return (
         <tr>
+            <td>Authentication Setup</td>
             <td>$500</td>
             <td>35%</td>
             <td>14</td>
