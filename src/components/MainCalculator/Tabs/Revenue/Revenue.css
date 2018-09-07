@@ -4,6 +4,10 @@
     background: #e6f0e6;
 }
 
+.row {
+    overflow: scroll;
+}
+
 .col {
     margin: 10px auto !important;
 }
@@ -26,8 +30,29 @@
     margin-left: 20px;
 }
 
+
+/* TABLE */
 .Table thead{
     font-size: 18px;
+}
+
+.Table th {
+    text-align: center;
+}
+
+@media (max-width: 499px) {
+    .Table {
+        width: 400px !important; 
+        margin-left: 0;
+        margin-right: 0; 
+    }
+    /* .Table th {
+        font-size: 14px;
+    }
+    .Table td {
+        font-size: 12px;
+        padding: 8px 0 !important;
+    } */
 }
 
 .Projection {

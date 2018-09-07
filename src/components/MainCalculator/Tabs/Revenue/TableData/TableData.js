@@ -2,6 +2,11 @@ import React from 'react';
 import classes from './TableData.css';
 
 const tableData = (props) => {
+
+    const changeHandler = (event) => {
+        
+    }
+
     return (
         <tr>
             <td>Authentication Setup</td>

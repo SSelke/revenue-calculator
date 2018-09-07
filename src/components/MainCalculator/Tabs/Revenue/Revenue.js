@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
+import Model from '../../../../containers/Model/Model';                              
 import TableData from './TableData/TableData';
 import classes from './Revenue.css';
 
@@ -75,6 +76,7 @@ class Revenue extends Component {
 
         return (
             <div id='revenue' style={this.props.style} className={classes.Revenue}>
+                
                 <Grid>
                     <Row>
                         <Col className={classes.col} xs={12} sm={12}>
@@ -85,7 +87,7 @@ class Revenue extends Component {
                         </Col>
                     </Row>
                     <Row className={classes.row}>
-                        <Col className={classes.col}  xs={12}>
+                        <Col className={classes.col} style={{margin: 0}}  xs={12}>
                             <div className={classes.Percentage}>
                                 <input type="number" onChange={this.productPercentageHandler} value={this.state.products_percentage}/>
                                 <span>One-Time Products</span>
@@ -101,7 +103,7 @@ class Revenue extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TableData />
+                                    <TableData revenue={this.state.revenueProjection}/>
                                     <TableData />
                                     <TableData />
                                 </tbody>
