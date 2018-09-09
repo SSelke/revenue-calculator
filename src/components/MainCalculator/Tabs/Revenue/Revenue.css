@@ -12,22 +12,38 @@
     margin: 10px auto !important;
 }
 
+/* Percentage Headers above tables */
+
 .Percentage {
     text-align: left;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    float: left;
 }
 
 .Percentage input {
     background: transparent;
     border: 1px solid black;
+    border-radius: 8px;
     width: 60px;
     text-align: center;
 }
 
+.Percentage input:hover,
+.Percentage input:focus,
+.Percentage input:active {
+   outline: none;
+}
+
 .Percentage span {
     margin-left: 20px;
+}
+
+.OneTime {-*/
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 
@@ -40,27 +56,12 @@
     text-align: center;
 }
 
-@media (max-width: 499px) {
-    .Table {
-        width: 400px !important; 
-        margin-left: 0;
-        margin-right: 0; 
-    }
-    /* .Table th {
-        font-size: 14px;
-    }
-    .Table td {
-        font-size: 12px;
-        padding: 8px 0 !important;
-    } */
-}
-
 .Projection {
     margin: 20px 0;
     text-align: left;
 }
 
-.Projection h3 {
+.Projection h1 {
     display: inline-block;
     margin-right: 15px;
     font-weight: bold;
@@ -68,13 +69,25 @@
 
 .Projection input {
     height: 40px;
-    width: 120px;
+    width: 100px;
     text-align: center;
     font-size: 18px;
     line-height: 18px;
     color: black;
     background: transparent;
-    border: 1px solid black;
+    border: none;
+    padding-left: 0;
+    border-bottom: 3px solid green;
+}
+
+.Projection span {
+    font-size: 18px;
+}
+
+.Projection input:hover,
+.Projection input:focus,
+.Projection input:active {
+    outline: none;
 }
 
 .Membership h3 {
@@ -87,6 +100,7 @@
     height: 100%;
     text-align: center;
     background: transparent;
+    border-radius: 8px;
     border: none;
 }
 
@@ -99,4 +113,29 @@
 .MemberTable td {
     height: 30px;
     border: 1px solid black;
+}
+
+@media (max-width: 499px) {
+    .Table {
+        width: 400px !important; 
+        margin-left: 0;
+        margin-right: 0; 
+    }
+
+    .Title {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .Percentage {
+        float: none;
+    }
+    .OneTime {
+        float: none;
+    }
+}
+
+@media (min-width: 500px) {
+    .Revenue {
+        min-height: 650px;
+    }
 }

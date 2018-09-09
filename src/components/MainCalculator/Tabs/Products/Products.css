@@ -1,0 +1,12 @@
+.Products {
+    height: 100%;
+    min-height: 650px;
+    width: 100%;
+    background: #e3e5e8;
+}
+
+@media (min-width: 500px) {
+    .Products {
+        min-height: 650px;
+    }
+}

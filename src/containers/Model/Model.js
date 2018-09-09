@@ -2,8 +2,12 @@ import React from 'react';
 import classes from './Model.css';
 
 const model = (props) => {
+
+    const style = {
+        display: props.visible ? 'block' : 'none'
+    };
     return (
-        <div className={classes.Model}>
+        <div style={style} className={classes.Model}>
             Hello
         </div>
     );
