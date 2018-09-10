@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { Grid, Row, Col, Table, Button } from 'react-bootstrap';
-import Model from '../../../../containers/Model/Model';                              
+import { Grid, Row, Col, Table, Button } from 'react-bootstrap';                             
 import TableData from './TableData/TableData';
 import classes from './Revenue.css';
 
@@ -13,15 +12,15 @@ class Revenue extends Component {
         products_percentage: 75,
         retainer_percentage: 25,
         oneTimeProducts: [
-            { product: 'Authentication Setup', percentage: 35, cost: '500'},
-            { product: 'List Hygiene 100K', percentage: 25, cost: '1995'},
-            { product: 'List Hygiene 300K', percentage: 10, cost: '3995'},
-            { product: 'De-Listing', percentage: 30, cost: '199'},
+            { product: 'Authentication Setup', percentage: 35, cost: 500},
+            { product: 'List Hygiene 100K', percentage: 25, cost: 1995},
+            { product: 'List Hygiene 300K', percentage: 10, cost: 3995},
+            { product: 'De-Listing', percentage: 30, cost: 199},
         ],
         retainerClients: [
-            { product: 'Silver', percentage: 35, cost: '1000'},
-            { product: 'Gold', percentage: 45, cost: '1997'},
-            { product: 'Platinum', percentage: 20, cost: '2995'}
+            { product: 'Silver', percentage: 35, cost: 1000},
+            { product: 'Gold', percentage: 45, cost: 1997},
+            { product: 'Platinum', percentage: 20, cost: 2995}
         ]
     }
 
@@ -71,6 +70,23 @@ class Revenue extends Component {
     }
 
     // HANDLE DELETION AND EDITING OF DATA ROWS
+    addRowHandler = (container) => {
+        const newRow = {
+            product: 'New ' + container,
+            percentage: 0,
+            cost: "0"
+        }
+        console.log(container);
+        if (container === 'product') {
+            const table = this.state.oneTimeProducts;
+            table.push(newRow);
+            this.setState({oneTimeProducts: table});
+        } else if (container === 'package') {
+            const table = this.state.retainerClients;
+            table.push(newRow);
+            this.setState({ retainerClients: table });
+        }
+    }
 
     deleteProductHandler = (index) => {
         const productArray = [...this.state.oneTimeProducts];
@@ -100,9 +116,12 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
+        if (event === '') {
+            event = 0;
+        }
         const products = this.state.oneTimeProducts;
         const row = products[index];
-        row.cost = event;
+        row.cost = Number(event);
         this.setState({ oneTimeProducts: products });
     }
 
@@ -110,9 +129,12 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
+        if (event === '') {
+            event = 0;
+        }
         const products = this.state.oneTimeProducts;
         const row = products[index];
-        row.percentage = event;
+        row.percentage = Number(event);
         this.setState({ oneTimeProducts: products });
     }
 
@@ -128,9 +150,12 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
+        if (event === '') {
+            event = 0;
+        }
         const products = this.state.retainerClients;
         const row = products[index];
-        row.cost = event;
+        row.cost = Number(event);
         this.setState({ retainerClients: products });
     }
 
@@ -138,9 +163,12 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
+        if (event === '') {
+            event = 0;
+        }
         const products = this.state.retainerClients;
         const row = products[index];
-        row.percentage = event;
+        row.percentage = Number(event);
         this.setState({ retainerClients: products });
     }
 
@@ -158,15 +186,21 @@ class Revenue extends Component {
         let totalPercentage = 0;
 
         const products = this.state.oneTimeProducts.map((item, index) => {
-            const months = Math.ceil((((item.percentage / 100) * one_time_products) / 12) / item.cost);
-            const amountPerMonth = months * item.cost;
-            const amountPerYear = months * 12;
-            const revenuePerYear = item.cost * (months * 12);
-            totalPerYear += revenuePerYear;
-            totalPerMonth += amountPerMonth;
-            amountSoldPerMonth += months;
-            amountSoldPerYear += amountPerYear;
-            totalPercentage += item.percentage;
+            let months = 0;
+            let amountPerMonth = 0;
+            let amountPerYear = 0;
+            let revenuePerYear = 0;
+            if (item.cost !== 0 && item.percentage !== 0) {
+                months = Math.ceil((((item.percentage / 100) * one_time_products) / 12) / item.cost);
+                amountPerMonth = months * item.cost;
+                amountPerYear = months * 12;
+                revenuePerYear = item.cost * (months * 12);
+                totalPerYear += revenuePerYear;
+                totalPerMonth += amountPerMonth;
+                amountSoldPerMonth += months;
+                amountSoldPerYear += amountPerYear;
+                totalPercentage += item.percentage;
+            }
             return (
                 <TableData key={index}
                            index={index}
@@ -195,15 +229,21 @@ class Revenue extends Component {
         let totalPercentageRev = 0;
 
         const packages = this.state.retainerClients.map((item, index) => {
-            const months = Math.ceil((((item.percentage / 100) * retainerPackages) / 12) / item.cost);
-            const amountPerMonth = months * item.cost;
-            const amountPerYear = months * 12;
-            const revenuePerYear = item.cost * (months * 12);
-            totalPerYearRev += revenuePerYear;
-            totalPerMonthRev += amountPerMonth;
-            amountSoldPerMonthRev += months;
-            amountSoldPerYearRev += amountPerYear;
-            totalPercentageRev += item.percentage;
+            let months = 0;
+            let amountPerMonth = 0;
+            let amountPerYear = 0;
+            let revenuePerYear = 0;
+            if (item.cost !== 0 && item.percentage !== 0) {
+                months = Math.ceil((((item.percentage / 100) * retainerPackages) / 12) / item.cost);
+                amountPerMonth = months * item.cost;
+                amountPerYear = months * 12;
+                revenuePerYear = item.cost * (months * 12);
+                totalPerYearRev += revenuePerYear;
+                totalPerMonthRev += amountPerMonth;
+                amountSoldPerMonthRev += months;
+                amountSoldPerYearRev += amountPerYear;
+                totalPercentageRev += item.percentage;
+            }
             return (
                 <TableData  key={index}
                             index={index}
@@ -257,7 +297,7 @@ class Revenue extends Component {
                                     {products}
                                     <tr>
                                         <td style={{ margin: '0 auto' }}>
-                                            <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall">Add</Button>
+                                            <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall" onClick={() => this.addRowHandler('product')}>Add</Button>
                                         </td>
                                         <td colSpan={2} style={{paddingRight: '30px'}}>Totals:</td>
                                         <td>{totalPercentage}%</td>
@@ -292,7 +332,7 @@ class Revenue extends Component {
                                     {packages}
                                     <tr>
                                         <td style={{ margin: '0 auto' }}>
-                                            <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall">Add</Button>
+                                            <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall" onClick={() => this.addRowHandler('package')}>Add</Button>
                                         </td>
                                         <td colSpan={2} style={{paddingRight: '30px' }}>Totals:</td>
                                         <td>{totalPercentageRev}%</td>
