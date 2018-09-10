@@ -1,7 +1,7 @@
 .Model {
     height: 100%;
     width: 100%;
-    background: gray;
+    background: rgb(207, 205, 205);
     z-index: 100;
     position: absolute;
     top: 50%;
@@ -13,9 +13,16 @@
     border-radius: 15px;
 }
 
+.Button {
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+    margin: 20px auto;
+}
+
 @media (min-width: 500px) {
     .Model {
         width: 500px;
-        height: 200px;
+        height: 350px;
     }
 }

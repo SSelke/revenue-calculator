@@ -40,7 +40,7 @@
     margin-left: 20px;
 }
 
-.OneTime {-*/
+.OneTime {
     float: right;
     font-size: 18px;
     font-weight: bold;
@@ -48,6 +48,11 @@
 
 
 /* TABLE */
+.Table {
+    font-size: 18px;
+    white-space: nowrap;
+        overflow: hidden;
+}
 .Table thead{
     font-size: 18px;
 }
@@ -71,8 +76,8 @@
     height: 40px;
     width: 100px;
     text-align: center;
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 22px;
+    line-height: 22px;
     color: black;
     background: transparent;
     border: none;
@@ -81,7 +86,7 @@
 }
 
 .Projection span {
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .Projection input:hover,

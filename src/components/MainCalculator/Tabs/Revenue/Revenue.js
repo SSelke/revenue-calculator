@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import { Grid, Row, Col, Table } from 'react-bootstrap';
+import { Grid, Row, Col, Table, Button } from 'react-bootstrap';
 import Model from '../../../../containers/Model/Model';                              
 import TableData from './TableData/TableData';
-import Add from './TableData/Add/Add';
 import classes from './Revenue.css';
 
 class Revenue extends Component {
@@ -14,8 +13,8 @@ class Revenue extends Component {
         products_percentage: 75,
         retainer_percentage: 25,
         oneTimeProducts: [
-            {product: 'Authentication Setup', percentage: 35, cost: '500'},
-            {product: 'List Hygiene 100K', percentage: 25, cost: '1995'},
+            { product: 'Authentication Setup', percentage: 35, cost: '500'},
+            { product: 'List Hygiene 100K', percentage: 25, cost: '1995'},
             { product: 'List Hygiene 300K', percentage: 10, cost: '3995'},
             { product: 'De-Listing', percentage: 30, cost: '199'},
         ],
@@ -23,10 +22,10 @@ class Revenue extends Component {
             { product: 'Silver', percentage: 35, cost: '1000'},
             { product: 'Gold', percentage: 45, cost: '1997'},
             { product: 'Platinum', percentage: 20, cost: '2995'}
-        ],
-        showModel: false
+        ]
     }
 
+    // HANDLE REVENUE PROJECTION AND PERCENTAGE UPDATE
     handleRevenueProjection = (event) => {
         if (event.target.value < 0) {
             return;
@@ -71,78 +70,160 @@ class Revenue extends Component {
         }
     }
 
-    showRow = () => {
-        this.setState({showModel: true}, () => {
-            console.log('hello');
+    // HANDLE DELETION AND EDITING OF DATA ROWS
+
+    deleteProductHandler = (index) => {
+        const productArray = [...this.state.oneTimeProducts];
+        productArray.splice(index, 1);
+        console.log(productArray);
+        this.setState({oneTimeProducts: productArray}, () => {
+            console.log(this.state.oneTimeProducts);
         });
     }
 
-    addRowHandler = () => {
-
+    deleteRetainerHandler = (index) => {
+        const productArray = this.state.retainerClients;
+        productArray.splice(index, 1);
+        this.setState({retainerClients: productArray});
     }
+
+    // UPDATE PRODUCTS ROW
+
+    productUpdate = (event, index) => {
+        const products = this.state.oneTimeProducts;
+        const row = products[index];
+        row.product = event;
+        this.setState({ oneTimeProducts: products });
+    }
+
+    updateCost = (event, index) => {
+        if (event < 0) {
+            return;
+        }
+        const products = this.state.oneTimeProducts;
+        const row = products[index];
+        row.cost = event;
+        this.setState({ oneTimeProducts: products });
+    }
+
+    percentageUpdate = (event, index) => {
+        if (event < 0) {
+            return;
+        }
+        const products = this.state.oneTimeProducts;
+        const row = products[index];
+        row.percentage = event;
+        this.setState({ oneTimeProducts: products });
+    }
+
+    // UPDATE RETAINER Row
+    retainerUpdate = (event, index) => {
+        const products = this.state.retainerClients;
+        const row = products[index];
+        row.product = event;
+        this.setState({ retainerClients: products });
+    }
+
+    updateRetainerCost = (event, index) => {
+        if (event < 0) {
+            return;
+        }
+        const products = this.state.retainerClients;
+        const row = products[index];
+        row.cost = event;
+        this.setState({ retainerClients: products });
+    }
+
+    percentageRetainerUpdate = (event, index) => {
+        if (event < 0) {
+            return;
+        }
+        const products = this.state.retainerClients;
+        const row = products[index];
+        row.percentage = event;
+        this.setState({ retainerClients: products });
+    }
+
 
     render () {
         // Total amount needed Revenue/Percentage
         const one_time_products = Math.ceil((this.state.products_percentage / 100) * this.state.revenueProjection);
         const retainerPackages = Math.ceil((this.state.retainer_percentage / 100) * this.state.revenueProjection);
 
-        //LOGIC FOR <TABLE></TABLE>
+
         let totalPerYear = 0;
         let totalPerMonth = 0;
         let amountSoldPerMonth = 0;
         let amountSoldPerYear = 0;
+        let totalPercentage = 0;
 
         const products = this.state.oneTimeProducts.map((item, index) => {
             const months = Math.ceil((((item.percentage / 100) * one_time_products) / 12) / item.cost);
             const amountPerMonth = months * item.cost;
             const amountPerYear = months * 12;
-            const revenuePerYear = item.cost * amountPerYear;
+            const revenuePerYear = item.cost * (months * 12);
             totalPerYear += revenuePerYear;
             totalPerMonth += amountPerMonth;
             amountSoldPerMonth += months;
             amountSoldPerYear += amountPerYear;
+            totalPercentage += item.percentage;
             return (
                 <TableData key={index}
+                           index={index}
+                           delete={this.deleteProductHandler.bind(this)}
+                           productUpdate={this.productUpdate.bind(this)}
+                           updateCost={this.updateCost.bind(this)}
+                           percentageUpdate={this.percentageUpdate.bind(this)}
                            name={item.product} 
+                           cost={item.cost}
                            percentage={item.percentage} 
-                           cost={item.cost} 
                            months={months}
                            amountPerMonth={amountPerMonth}
                            amountPerYear={amountPerYear}
-                           revenuePerYear={revenuePerYear} />
+                           revenuePerYear={revenuePerYear}
+                           />
             );
         });
         
         //LOGIC FOR <TABLE></TABLE>
+
+
         let totalPerYearRev = 0;
         let totalPerMonthRev = 0;
         let amountSoldPerMonthRev = 0;
         let amountSoldPerYearRev = 0;
+        let totalPercentageRev = 0;
 
         const packages = this.state.retainerClients.map((item, index) => {
             const months = Math.ceil((((item.percentage / 100) * retainerPackages) / 12) / item.cost);
             const amountPerMonth = months * item.cost;
             const amountPerYear = months * 12;
-            const revenuePerYear = item.cost * amountPerYear;
+            const revenuePerYear = item.cost * (months * 12);
             totalPerYearRev += revenuePerYear;
             totalPerMonthRev += amountPerMonth;
             amountSoldPerMonthRev += months;
             amountSoldPerYearRev += amountPerYear;
+            totalPercentageRev += item.percentage;
             return (
-                <TableData key={index}
-                    name={item.product}
-                    percentage={item.percentage}
-                    cost={item.cost}
-                    months={months}
-                    amountPerMonth={amountPerMonth}
-                    amountPerYear={amountPerYear}
-                    revenuePerYear={revenuePerYear} />              
+                <TableData  key={index}
+                            index={index}
+                            delete={this.deleteRetainerHandler.bind(this)}
+                            productUpdate={this.retainerUpdate.bind(this)}
+                            updateCost={this.updateRetainerCost.bind(this)}
+                            percentageUpdate={this.percentageRetainerUpdate.bind(this)}
+                            name={item.product}
+                            cost={item.cost}
+                            percentage={item.percentage}
+                            months={months}
+                            amountPerMonth={amountPerMonth}
+                            amountPerYear={amountPerYear}
+                            revenuePerYear={revenuePerYear}
+                />
             );
         });
 
         return (
             <div id='revenue' style={this.props.style} className={classes.Revenue}>
-                <Model visible={this.state.showModel}/>
                 <Grid>
                     <Row>
                         <Col className={classes.col} xs={12} sm={12}>
@@ -166,15 +247,20 @@ class Revenue extends Component {
                                         <th>Product</th>
                                         <th>Price</th>
                                         <th>%</th>
-                                        <th colSpan="2">Month</th>
-                                        <th colSpan="2">Year</th>
+                                        <th>Amount/Mo</th>
+                                        <th>Total/Mo</th>
+                                        <th>Amount/Year</th>
+                                        <th>Total/Year</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {products}
                                     <tr>
-                                        <Add />
-                                        <td colSpan={3} style={{textAlign: 'right', paddingRight: '30px'}}>Totals:</td>
+                                        <td style={{ margin: '0 auto' }}>
+                                            <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall">Add</Button>
+                                        </td>
+                                        <td colSpan={2} style={{paddingRight: '30px'}}>Totals:</td>
+                                        <td>{totalPercentage}%</td>
                                         <td>{amountSoldPerMonth}</td>
                                         <td>${totalPerMonth.toLocaleString()}</td>
                                         <td>{amountSoldPerYear}</td>
@@ -196,15 +282,20 @@ class Revenue extends Component {
                                         <th>Package</th>
                                         <th>Price</th>
                                         <th>%</th>
-                                        <th colSpan="2">Month</th>
-                                        <th colSpan="2">Year</th>
+                                        <th>Amount/Mo</th>
+                                        <th>Total/Mo</th>
+                                        <th>Amount/Year</th>
+                                        <th>Total/Year</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {packages}
                                     <tr>
-                                        <Add />
-                                        <td colSpan={3} style={{ textAlign: 'right', paddingRight: '30px' }}>Totals:</td>
+                                        <td style={{ margin: '0 auto' }}>
+                                            <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall">Add</Button>
+                                        </td>
+                                        <td colSpan={2} style={{paddingRight: '30px' }}>Totals:</td>
+                                        <td>{totalPercentageRev}%</td>
                                         <td>{amountSoldPerMonthRev}</td>
                                         <td>${totalPerMonthRev.toLocaleString()}</td>
                                         <td>{amountSoldPerYearRev}</td>
@@ -220,22 +311,5 @@ class Revenue extends Component {
     }
 
 }
-
- 
-// <Col xs={12} sm={6}>
-//     <div className={classes.Membership}>
-//         <h3>Membership</h3>
-//         <table className={classes.MemberTable}>
-//             <tbody>
-//                 <tr>
-//                     <td><input type="text" /></td>
-//                     <td><input type="text" /></td>
-//                     <td><input type="text" /></td>
-//                     <td><input type="text" /></td>
-//                 </tr>
-//             </tbody>
-//         </table>
-//     </div>
-// </Col>
 
 export default Revenue;

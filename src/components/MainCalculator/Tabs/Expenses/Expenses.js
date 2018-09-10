@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 import ExpenseData from './ExpenseData/ExpenseData';
-import Add from '../Revenue/TableData/Add/Add';
 import classes from './Expenses.css';
 
 const expenses = (props) => {
@@ -31,7 +30,6 @@ const expenses = (props) => {
                                 <ExpenseData />
                                 <ExpenseData />
                                 <ExpenseData />
-                                <Add />
                             </tbody>
                         </Table>
                     </Col>
