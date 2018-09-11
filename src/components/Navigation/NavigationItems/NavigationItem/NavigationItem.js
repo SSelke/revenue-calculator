@@ -3,12 +3,10 @@ import classes from './NavigationItem.css';
 
 const navigationItem = (props) => {
 
-    let number = props.value;
-
     return (
         <div className={classes.NavigationItem}>
             <div>{props.dataType}</div>
-            <div>${number.toLocaleString()}</div>
+            <div>${(props.value).toLocaleString()}</div>
         </div>
     );
 }

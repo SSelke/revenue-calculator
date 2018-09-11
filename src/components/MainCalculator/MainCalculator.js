@@ -58,7 +58,7 @@ class MainCalculator extends Component {
                 </ul>
                 <div>
                     <Revenue />
-                    <Expenses style={style}/>
+                    <Expenses style={style} updateExpenses={(total) => this.props.updateExpenses(total)}/>
                     <Products style={style}/>
                 </div>
             </div>

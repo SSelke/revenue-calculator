@@ -17,7 +17,7 @@ class Calculator extends Component {
     render () {
         return (
             <div className={classes.calculator}> 
-                <MainCalculator />
+                <MainCalculator updateExpenses={(total) => this.props.updateExpenses(total)}/>
                 <Hours />
             </div>
         );

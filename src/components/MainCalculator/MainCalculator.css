@@ -1,7 +1,7 @@
 .MainContainer {
     height: 100%;
-    width: 90%;
-    margin: 0 5%;
+    width: 100%;
+    margin: 0;
     padding: 0;
     overflow: auto;
 }
@@ -44,4 +44,18 @@ button:hover,
 button:focus, 
 button:active, {
     border: none;
+}
+
+@media (min-width: 500px) {
+    .MainContainer {
+        width: 90%;
+        margin: 0 5%;
+    }
+}
+
+@media (min-width: 700px) {
+    .MainContainer {
+        width: 70%;
+        margin: 0 15%;
+    }
 }

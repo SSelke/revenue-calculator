@@ -16,7 +16,20 @@
     font-weight: bold;
 }
 
+.Table {
+    font-size: 18px;
+    color: rgb(220, 53, 69);
+}
+
 .Table th {
+    text-align: center;
+}
+
+.Table input {
+    height: 100%;
+    font-size: 18px;
+    background: none;
+    border: none;
     text-align: center;
 }
 

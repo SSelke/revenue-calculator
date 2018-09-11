@@ -1,19 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import NavigationItems from '../../components/Navigation/NavigationItems/NavigationItems';
-import Hours from '../../components/Hours/Hours';
 import classes from './Layout.css';
 
 class Layout extends Component {
 
-    state = {
-       
-    }
-
     render () {
-
         return (
             <Fragment>
-                <NavigationItems numbers={this.props.numbers}/>
+                <NavigationItems profit={this.props.profit} revenue={this.props.revenue} expenses={this.props.expenses} rate={this.props.rate}/>
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>

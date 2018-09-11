@@ -5,10 +5,10 @@ import classes from './NavigationItems.css';
 const navigationItems = (props) => {
     return (
         <div className={classes.NavigationItems}>
-            <NavigationItem dataType='Profit' value={props.numbers.profit}/>
-            <NavigationItem dataType='Revenue' value={props.numbers.revenue}/>
-            <NavigationItem dataType='Expenses' value={props.numbers.expenses}/>
-            <NavigationItem dataType='Rate' value={props.numbers.rate}/>
+            <NavigationItem dataType='Profit' value={props.profit}/>
+            <NavigationItem dataType='Revenue' value={props.revenue}/>
+            <NavigationItem dataType='Expenses' value={props.expenses > 0 ? props.expenses : 379152}/>
+            <NavigationItem dataType='Rate' value={props.rate}/>
         </div>
     );
 }
