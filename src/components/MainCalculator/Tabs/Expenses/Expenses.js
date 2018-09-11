@@ -108,7 +108,6 @@ class Expenses extends Component {
                             <div className={classes.Header}>
                                 <h1>Expenses</h1>
                                 <p>The <em>FASTEST</em> way to profit is to reduce expenses!</p>
-                                {this.state.totalExpenses}
                             </div>
                         </Col>
                     </Row>

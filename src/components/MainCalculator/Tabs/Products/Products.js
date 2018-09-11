@@ -4,7 +4,7 @@ import classes from './Products.css';
 const products = (props) => {
     return (
         <div id="products" style={props.style} className={classes.Products}>
-            products
+            ROLLBACK!!! Depricated until I fix logical errors
         </div>
     );
 }
