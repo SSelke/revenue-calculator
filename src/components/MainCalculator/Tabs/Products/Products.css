@@ -3,6 +3,30 @@
     min-height: 650px;
     width: 100%;
     background: #e3e5e8;
+    text-align: left;
+}
+
+.Products p {
+    font-size: 18px;
+}
+
+.row {
+    overflow: scroll;
+}
+
+.Table {
+    font-size: 18px;
+    white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+}
+
+.Table th {
+    text-align: center;
+}
+
+.Add {
+    width: 60px;
 }
 
 @media (min-width: 500px) {

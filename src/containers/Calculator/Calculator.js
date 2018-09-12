@@ -5,19 +5,12 @@ import classes from './Calculator.css';
 
 class Calculator extends Component {
 
-    state = {
-        numbers: {
-            profit: 216000,
-            revenue: 400000,
-            expenses: 80000,
-            rate: 4
-        }
-    }
-
     render () {
         return (
             <div className={classes.calculator}> 
-                <MainCalculator updateExpenses={(total) => this.props.updateExpenses(total)}/>
+                <MainCalculator updateRevenue={(total) => this.props.updateRevenue(total)}
+                                updateExpenses={(total) => this.props.updateExpenses(total)}
+                                updateRate={(total) => this.props.updateRate(total)}/>
                 <Hours />
             </div>
         );

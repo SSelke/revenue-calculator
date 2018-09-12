@@ -11,13 +11,13 @@ const tableData = (props) => {
                     </ButtonGroup>
                 </td>
                 <td className={classes.Data}>
-                    <input type="text" value={props.name} 
+                    <input type="text" value={props.name}
                                        onChange={(event) => props.productUpdate(event.target.value, props.index)} />
                 </td>
                 <td className={classes.Data}>
-                    <span>$
+                    <span style={{ marginLeft: '58px' }}>$
                         <input type="number" style={{ width: '100px', textAlign: 'left' }}
-                                                value={props.cost} 
+                                                value={props.cost} onFocus={() => {this.value = " "}}
                                                 onChange={(event) => props.updateCost(event.target.value, props.index)} />
                     </span>
                 </td>

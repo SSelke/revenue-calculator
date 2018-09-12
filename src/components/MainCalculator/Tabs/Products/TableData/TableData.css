@@ -1,0 +1,16 @@
+.Button {
+    width: 80px;
+}
+
+.Data span {
+    font-size: 18px;
+    color: #dc3545;
+}
+
+.Data input {
+    width: 200px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 18px;
+}

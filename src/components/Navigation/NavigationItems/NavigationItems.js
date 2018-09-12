@@ -7,7 +7,7 @@ const navigationItems = (props) => {
         <div className={classes.NavigationItems}>
             <NavigationItem dataType='Profit' value={props.profit}/>
             <NavigationItem dataType='Revenue' value={props.revenue}/>
-            <NavigationItem dataType='Expenses' value={props.expenses > 0 ? props.expenses : 379152}/>
+            <NavigationItem dataType='Expenses' value={props.expenses >= 0 ? props.expenses : 379152}/>
             <NavigationItem dataType='Rate' value={props.rate}/>
         </div>
     );

@@ -42,7 +42,9 @@ class Expenses extends Component {
     deleteRowHandler = (index) => {
         const array = [...this.state.expenses];
         array.splice(index, 1);
-        this.setState({expenses: array});
+        this.setState({expenses: array}, () => {
+            this.updateTotalExpenses();
+        });
     }
 
     updateNameHandler = (event, index) => {
@@ -111,9 +113,9 @@ class Expenses extends Component {
                             </div>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
-                            <Table striped className={classes.Table}>
+                    <Row className={classes.row}>
+                        <Col className={classes.col}>
+                            <Table striped bordered className={classes.Table}>
                                 <thead>
                                     <tr>
                                         <th>Delete</th>
@@ -126,7 +128,7 @@ class Expenses extends Component {
                                     {expenseData}
                                     <tr style={{background: 'none'}}>
                                         <td>
-                                            <Button bsSize='xsmall' bsStyle="success" style={{padding: 'auto'}} onClick={this.addRowHandler}>Add</Button>
+                                            <Button bsSize='xsmall' bsStyle="success" style={{ width: '60px' }} onClick={this.addRowHandler}>Add</Button>
                                         </td>
                                         <td colSpan={2}></td>
                                         <td>

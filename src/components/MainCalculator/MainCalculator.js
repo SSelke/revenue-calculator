@@ -57,9 +57,9 @@ class MainCalculator extends Component {
                     <li><button onClick={() => this.navClickedHandler("p")}>Products</button></li>
                 </ul>
                 <div>
-                    <Revenue />
+                    <Revenue updateRevenue={(total) => this.props.updateRevenue(total)}/>
                     <Expenses style={style} updateExpenses={(total) => this.props.updateExpenses(total)}/>
-                    <Products style={style}/>
+                    <Products style={style} updateRate={(total) => this.props.updateRate(total)}/>
                 </div>
             </div>
         );

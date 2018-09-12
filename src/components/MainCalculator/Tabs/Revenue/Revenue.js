@@ -7,6 +7,7 @@ class Revenue extends Component {
 
     state = {
         revenueProjection: 250000,
+        totalRevenue: 0,
         one_time_products_value: 187500,
         retainer_packages_value: 62500,
         products_percentage: 75,
@@ -30,7 +31,7 @@ class Revenue extends Component {
             return;
         }
         this.setState({ revenueProjection: event.target.value}, () => {
-            console.log(this.state.revenueProjection);
+            this.updateTotalRevenue();
         });
     }
 
@@ -74,7 +75,7 @@ class Revenue extends Component {
         const newRow = {
             product: 'New ' + container,
             percentage: 0,
-            cost: "0"
+            cost: 0
         }
         console.log(container);
         if (container === 'product') {
@@ -170,6 +171,14 @@ class Revenue extends Component {
         const row = products[index];
         row.percentage = Number(event);
         this.setState({ retainerClients: products });
+    }
+
+    updateTotalRevenue = () => {
+        const totalRevenue = this.state.one_time_products_value + this.state.retainer_packages_value;
+        console.log(totalRevenue);
+        this.setState({totalRevenue: totalRevenue}, () => {
+            this.props.updateRevenue(totalRevenue);
+        });
     }
 
 
@@ -280,7 +289,7 @@ class Revenue extends Component {
                                 <span className={classes.Title}>One-Time Products</span>
                             </div>
                             <span className={classes.OneTime}>${one_time_products.toLocaleString()}</span>
-                            <Table striped className={classes.Table}>
+                            <Table striped bordered className={classes.Table}>
                                 <thead>
                                     <tr>
                                         <th>Delete</th>
@@ -315,7 +324,7 @@ class Revenue extends Component {
                                 <span>Retainer Packages</span>
                             </div>
                             <span className={classes.OneTime}>${retainerPackages.toLocaleString()}</span>
-                            <Table striped className={classes.Table}>
+                            <Table striped bordered className={classes.Table}>
                                 <thead>
                                     <tr>
                                         <th>Delete</th>
