@@ -27,7 +27,6 @@ class Products extends Component {
             cost: 0,
             time: 0
         }
-        console.log(container);
         if (container === 'product') {
             const table = this.state.oneTimeProducts;
             table.push(newRow);
@@ -42,16 +41,15 @@ class Products extends Component {
     deleteProductHandler = (index) => {
         const productArray = [...this.state.oneTimeProducts];
         productArray.splice(index, 1);
-        console.log(productArray);
         this.setState({ oneTimeProducts: productArray }, () => {
             this.updateTotalRate();
         });
     }
 
     deleteRetainerHandler = (index) => {
-        const productArray = this.state.retainerClients;
+        const productArray = [...this.state.retainerPackages];
         productArray.splice(index, 1);
-        this.setState({ retainerClients: productArray }, () => {
+        this.setState({ retainerPackages: productArray }, () => {
             this.updateTotalRate();
         });
     }
@@ -177,8 +175,8 @@ class Products extends Component {
                             time={item.time}
                             type='package'
                             index={index}
-                    key={index}
-                            delete={this.deleteProductHandler.bind(this)}
+                            key={index}
+                            delete={this.deleteRetainerHandler.bind(this)}
                             updateName={this.updateNameHandler.bind(this)}
                             updateCost={this.updateCostHandler.bind(this)}
                             updateTime={this.updateTimeHandler.bind(this)} />
@@ -214,7 +212,7 @@ class Products extends Component {
                                         <td>Total:</td>
                                         <td>${Math.ceil(totalPrice).toLocaleString()}</td>
                                         <td>{totalTime}</td>
-                                        <td>${Math.ceil(totalRate).toLocaleString()}</td>
+                                        <td>${ totalRate ? Math.ceil(totalRate).toLocaleString() : 0}</td>
                                     </tr>
                                 </tbody>
                             </Table>
@@ -241,7 +239,7 @@ class Products extends Component {
                                         <td>Total:</td>
                                         <td>${Math.ceil(totalPriceRev).toLocaleString()}</td>
                                         <td>{totalTimeRev}</td>
-                                        <td>${Math.ceil(totalRateRev).toLocaleString()}</td>
+                                        <td>${totalRateRev ? Math.ceil(totalRateRev).toLocaleString() : 0}</td>
                                     </tr>
                                 </tbody>
                             </Table>

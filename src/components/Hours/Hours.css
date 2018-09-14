@@ -13,6 +13,7 @@
 
 .Col input {
     display: inline-block;
+    background: transparent;
     width: 35px;
     border: none;
     margin-left: 10px;

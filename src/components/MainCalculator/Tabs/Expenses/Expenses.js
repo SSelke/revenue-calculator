@@ -11,20 +11,7 @@ class Expenses extends Component {
             {name: 'ATT', category: 'Telecom', amount: 433 },
             {name: 'Accountant', category: 'Taxes', amount: 1000 }
         ],
-        totalExpenses: 0
-    }
-
-    componentWillMount = () => {
-        let totalExpenses = 0;
-        this.state.expenses.map((item) => {
-            totalExpenses += item.amount;
-        });
-
-        totalExpenses = totalExpenses * 12;
-
-        this.setState({ totalExpenses: totalExpenses }, (totalExpenses) => {
-            this.props.updateExpenses(totalExpenses);
-        });
+        totalExpenses: 31596
     }
 
     addRowHandler = () => {
@@ -132,8 +119,8 @@ class Expenses extends Component {
                                         </td>
                                         <td colSpan={2}></td>
                                         <td>
-                                            <div>Total (Month) <span>${(this.state.totalExpenses).toLocaleString()}</span></div>
-                                            <div>Total (Year) <span>${(this.state.totalExpenses * 12).toLocaleString()}</span></div>
+                                            <div>Total (Month) <span>${(this.state.totalExpenses / 12).toLocaleString()}</span></div>
+                                            <div>Total (Year) <span>${(this.state.totalExpenses).toLocaleString()}</span></div>
                                         </td>
                                     </tr>
                                 </tbody>

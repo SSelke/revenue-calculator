@@ -3,6 +3,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import classes from './TableData.css';
 
 const tableData = (props) => {
+    const rate = Math.ceil((props.cost / props.time));
     return (
         <tr>
             <td>
@@ -15,7 +16,7 @@ const tableData = (props) => {
                     onChange={(event) => props.updateName(event.target.value, props.index, props.type)} />
             </td>
             <td className={classes.Data}>
-                <span style={{marginLeft: '58px'}}>$
+                <span style={{ marginLeft: '58px' }}>$
                         <input type="number" style={{ width: '100px', textAlign: 'left' }}
                         value={props.cost}
                         onChange={(event) => props.updateCost(event.target.value, props.index, props.type)} />
@@ -27,9 +28,9 @@ const tableData = (props) => {
                         step="0.25"
                         value={props.time}
                         onChange={(event) => props.updateTime(event.target.value, props.index, props.type)} />
-                    </span>
+                </span>
             </td>
-            <td>${Math.ceil((props.cost / props.time)).toLocaleString()}</td>
+            <td>${rate > 0 ? rate.toLocaleString() : 0}</td>
         </tr>
     );
 }

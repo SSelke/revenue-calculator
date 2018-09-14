@@ -60,12 +60,16 @@ class Revenue extends Component {
             case 'product':
                 number = this.state.products_percentage;
                 newNumber -= number;
-                this.setState({ retainer_percentage: newNumber });
+                this.setState({ retainer_percentage: newNumber }, () => {
+                    this.updateTotalRevenue();
+                });
                 break;
             case 'retainer':
                 number = this.state.retainer_percentage;
                 newNumber -= number;
-                this.setState({ products_percentage: newNumber });
+                this.setState({ products_percentage: newNumber }, () => {
+                    this.updateTotalRevenue();
+                });
                 break;
         }
     }
@@ -77,7 +81,6 @@ class Revenue extends Component {
             percentage: 0,
             cost: 0
         }
-        console.log(container);
         if (container === 'product') {
             const table = this.state.oneTimeProducts;
             table.push(newRow);
@@ -92,16 +95,17 @@ class Revenue extends Component {
     deleteProductHandler = (index) => {
         const productArray = [...this.state.oneTimeProducts];
         productArray.splice(index, 1);
-        console.log(productArray);
         this.setState({oneTimeProducts: productArray}, () => {
-            console.log(this.state.oneTimeProducts);
+            this.updateTotalRevenue();
         });
     }
 
     deleteRetainerHandler = (index) => {
         const productArray = this.state.retainerClients;
         productArray.splice(index, 1);
-        this.setState({retainerClients: productArray});
+        this.setState({retainerClients: productArray}, () => {
+            this.updateTotalRevenue();
+        });
     }
 
     // UPDATE PRODUCTS ROW
@@ -110,7 +114,9 @@ class Revenue extends Component {
         const products = this.state.oneTimeProducts;
         const row = products[index];
         row.product = event;
-        this.setState({ oneTimeProducts: products });
+        this.setState({ oneTimeProducts: products }, () => {
+            this.updateTotalRevenue();
+        });
     }
 
     updateCost = (event, index) => {
@@ -123,7 +129,9 @@ class Revenue extends Component {
         const products = this.state.oneTimeProducts;
         const row = products[index];
         row.cost = Number(event);
-        this.setState({ oneTimeProducts: products });
+        this.setState({ oneTimeProducts: products }, () => {
+            this.updateTotalRevenue();
+        });
     }
 
     percentageUpdate = (event, index) => {
@@ -136,7 +144,9 @@ class Revenue extends Component {
         const products = this.state.oneTimeProducts;
         const row = products[index];
         row.percentage = Number(event);
-        this.setState({ oneTimeProducts: products });
+        this.setState({ oneTimeProducts: products }, () => {
+            this.updateTotalRevenue();
+        });
     }
 
     // UPDATE RETAINER Row
@@ -144,7 +154,9 @@ class Revenue extends Component {
         const products = this.state.retainerClients;
         const row = products[index];
         row.product = event;
-        this.setState({ retainerClients: products });
+        this.setState({ retainerClients: products }, () => {
+            this.updateTotalRevenue();
+        });
     }
 
     updateRetainerCost = (event, index) => {
@@ -157,7 +169,9 @@ class Revenue extends Component {
         const products = this.state.retainerClients;
         const row = products[index];
         row.cost = Number(event);
-        this.setState({ retainerClients: products });
+        this.setState({ retainerClients: products }, () => {
+            this.updateTotalRevenue();
+        });
     }
 
     percentageRetainerUpdate = (event, index) => {
@@ -170,12 +184,24 @@ class Revenue extends Component {
         const products = this.state.retainerClients;
         const row = products[index];
         row.percentage = Number(event);
-        this.setState({ retainerClients: products });
+        this.setState({ retainerClients: products }, () => {
+            this.updateTotalRevenue();
+        });
     }
 
     updateTotalRevenue = () => {
-        const totalRevenue = this.state.one_time_products_value + this.state.retainer_packages_value;
-        console.log(totalRevenue);
+        const one_time_products = Math.ceil((this.state.products_percentage / 100) * this.state.revenueProjection);
+        const retainerPackages = Math.ceil((this.state.retainer_percentage / 100) * this.state.revenueProjection);
+        let totalRevenue = 0;
+        let months = 0;
+        this.state.oneTimeProducts.map((item) => {
+            months = Math.ceil((((item.percentage / 100) * one_time_products) / 12) / item.cost);
+            totalRevenue += (item.cost * (months * 12));
+        });
+        this.state.retainerClients.map((item) => {
+            months = Math.ceil((((item.percentage / 100) * retainerPackages) / 12) / item.cost);
+            totalRevenue += (item.cost * (months * 12));
+        });
         this.setState({totalRevenue: totalRevenue}, () => {
             this.props.updateRevenue(totalRevenue);
         });
