@@ -1,0 +1,9 @@
+.Header {
+    margin: 0 auto 80px auto;
+}
+
+.Header h1 {
+    font-size: 80px;
+    padding-top: 80px;
+    margin: 0;
+}

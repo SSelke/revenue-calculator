@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:400,700');
+
 .App {
   text-align: center;
   background-image: url(./bg.png);
+  font-family: 'Noto Serif KR', sans-serif;
 } 

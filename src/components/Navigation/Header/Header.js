@@ -1,10 +1,11 @@
 import React from 'react';
-import NavigationItems from '../NavigationItems/NavigationItems';
 import classes from './Header.css';
 
 const header = (props) => {
     return (
-        <NavigationItems />
+        <div className={classes.Header}>
+            <h1><strong>Revenue Projection Calculator</strong></h1>
+        </div>
     );
 }
 
