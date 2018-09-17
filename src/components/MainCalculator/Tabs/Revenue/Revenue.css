@@ -54,6 +54,9 @@
     font-size: 18px;
     white-space: nowrap;
         overflow: hidden;
+     overflow: scroll;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .Table th {
