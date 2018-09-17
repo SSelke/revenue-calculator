@@ -48,12 +48,12 @@ button:active, {
 
 @media (min-width: 500px) {
     .MainContainer {
-        width: 90%;
-        margin: 0 5%;
+        width: 100%;
+        margin: 0;
     }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
     .MainContainer {
         width: 70%;
         margin: 0 15%;

@@ -19,7 +19,7 @@ const tableData = (props) => {
                 <td className={classes.Data}>
                     <span style={{ marginLeft: '58px' }}>$
                         <input type="number" style={{ width: '100px', textAlign: 'left' }}
-                                                value={cost} onFocus={this.cost = ' '}
+                                                value={cost}
                                                 onChange={(event) => props.updateCost(event.target.value, props.index)} />
                     </span>
                 </td>
