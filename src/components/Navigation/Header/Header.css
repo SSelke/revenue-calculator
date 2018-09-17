@@ -3,7 +3,14 @@
 }
 
 .Header h1 {
-    font-size: 80px;
-    padding-top: 80px;
+    font-size: 40px;
+    padding-top: 45px;
     margin: 0;
+}
+
+@media (min-width: 800px) {
+    .Header h1 {
+        font-size: 65px;
+        padding-top: 80px;
+    }
 }

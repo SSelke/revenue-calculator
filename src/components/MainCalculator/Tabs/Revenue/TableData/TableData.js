@@ -3,6 +3,8 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import classes from './TableData.css';
 
 const tableData = (props) => {
+
+    const cost = props.cost;
         return (
             <tr>
                 <td>
@@ -17,7 +19,7 @@ const tableData = (props) => {
                 <td className={classes.Data}>
                     <span style={{ marginLeft: '58px' }}>$
                         <input type="number" style={{ width: '100px', textAlign: 'left' }}
-                                                value={props.cost} onFocus={() => {this.value = " "}}
+                                                value={cost} onFocus={this.cost = ' '}
                                                 onChange={(event) => props.updateCost(event.target.value, props.index)} />
                     </span>
                 </td>

@@ -10,7 +10,7 @@ class NavigationItems extends Component {
     
     scrollHandler = () => {
         const element = document.getElementById('navs');
-        if (window.pageYOffset > this.state.sticky) {
+        if (window.pageYOffset > this.state.sticky && document.documentElement.clientWidth < 800) {
             element.classList.add(classes.sticky);
         } else {
             element.classList.remove(classes.sticky);

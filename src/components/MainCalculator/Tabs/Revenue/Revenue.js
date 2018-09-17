@@ -123,12 +123,9 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
-        if (event === '') {
-            event = 0;
-        }
         const products = this.state.oneTimeProducts;
         const row = products[index];
-        row.cost = Number(event);
+        row.cost = event;
         this.setState({ oneTimeProducts: products }, () => {
             this.updateTotalRevenue();
         });
@@ -138,12 +135,9 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
-        if (event === '') {
-            event = 0;
-        }
         const products = this.state.oneTimeProducts;
         const row = products[index];
-        row.percentage = Number(event);
+        row.percentage = event;
         this.setState({ oneTimeProducts: products }, () => {
             this.updateTotalRevenue();
         });
@@ -163,12 +157,9 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
-        if (event === '') {
-            event = 0;
-        }
         const products = this.state.retainerClients;
         const row = products[index];
-        row.cost = Number(event);
+        row.cost = event;
         this.setState({ retainerClients: products }, () => {
             this.updateTotalRevenue();
         });
@@ -178,12 +169,9 @@ class Revenue extends Component {
         if (event < 0) {
             return;
         }
-        if (event === '') {
-            event = 0;
-        }
         const products = this.state.retainerClients;
         const row = products[index];
-        row.percentage = Number(event);
+        row.percentage = event;
         this.setState({ retainerClients: products }, () => {
             this.updateTotalRevenue();
         });
@@ -195,12 +183,16 @@ class Revenue extends Component {
         let totalRevenue = 0;
         let months = 0;
         this.state.oneTimeProducts.map((item) => {
-            months = Math.ceil((((item.percentage / 100) * one_time_products) / 12) / item.cost);
-            totalRevenue += (item.cost * (months * 12));
+            if (Number(item.cost) > 0 && Number(item.percentage) > 0) {
+                months = Math.ceil((((Number(item.percentage) / 100) * one_time_products) / 12) / Number(item.cost));
+                totalRevenue += (Number(item.cost) * (months * 12));
+            }
         });
         this.state.retainerClients.map((item) => {
-            months = Math.ceil((((item.percentage / 100) * retainerPackages) / 12) / item.cost);
-            totalRevenue += (item.cost * (months * 12));
+            if (Number(item.cost) > 0 && Number(item.percentage) > 0) {
+                months = Math.ceil((((Number(item.percentage) / 100) * retainerPackages) / 12) / Number(item.cost));
+                totalRevenue += (Number(item.cost) * (months * 12));
+            }
         });
         this.setState({totalRevenue: totalRevenue}, () => {
             this.props.updateRevenue(totalRevenue);
@@ -225,7 +217,7 @@ class Revenue extends Component {
             let amountPerMonth = 0;
             let amountPerYear = 0;
             let revenuePerYear = 0;
-            if (item.cost !== 0 && item.percentage !== 0) {
+            if (Number(item.cost) > 0 && Number(item.percentage) > 0) {
                 months = Math.ceil((((item.percentage / 100) * one_time_products) / 12) / item.cost);
                 amountPerMonth = months * item.cost;
                 amountPerYear = months * 12;
@@ -268,7 +260,7 @@ class Revenue extends Component {
             let amountPerMonth = 0;
             let amountPerYear = 0;
             let revenuePerYear = 0;
-            if (item.cost !== 0 && item.percentage !== 0) {
+            if (Number(item.cost) > 0 && Number(item.percentage) > 0) {
                 months = Math.ceil((((item.percentage / 100) * retainerPackages) / 12) / item.cost);
                 amountPerMonth = months * item.cost;
                 amountPerYear = months * 12;
