@@ -7,20 +7,13 @@ class NavigationItems extends Component {
     state = {
         sticky: null
     }
-    // updateDimensions = () => {
-    //     if (window.pageYOffset > this.state.sticky) {
-    //         const element = document.getElementById('navs');
-    //         const sticky = element.offsetTop;
-    //         console.log(sticky);
-    //         this.setState({ sticky: sticky });
-    //     }
-    // }
+    
     scrollHandler = () => {
         const element = document.getElementById('navs');
-        if (window.pageYOffset > this.state.sticky && document.documentElement.clientWidth < 800) {
-            element.classList.add("NavigationItems__sticky__jlVDr");
+        if (window.pageYOffset > this.state.sticky) {
+            element.classList.add(classes.sticky);
         } else {
-            element.classList.remove("NavigationItems__sticky__jlVDr");
+            element.classList.remove(classes.sticky);
         }
     }
 
@@ -38,8 +31,10 @@ class NavigationItems extends Component {
 
     render () {
 
+        const assignedClasses = [classes.NavigationItems];
+
         return (
-            <div className={classes.NavigationItems} id='navs'>
+            <div className={assignedClasses.join(' ')} id='navs'>
                 <span></span>
                 <NavigationItem dataType='Profit' value={this.props.profit} />
                 <NavigationItem dataType='Revenue' value={this.props.revenue} />

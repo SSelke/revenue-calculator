@@ -12,7 +12,7 @@ class Layout extends Component {
     scrollHandler = () => {
         console.log(this.state.sticky);
         const element = document.getElementById('main');
-        if (window.pageYOffset > this.state.sticky && document.documentElement.clientWidth < 800) {
+        if (window.pageYOffset > this.state.sticky) {
             element.style.paddingTop = "170px";
         } else {
             element.style.paddingTop = "0";
