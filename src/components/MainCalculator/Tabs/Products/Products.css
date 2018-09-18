@@ -29,6 +29,7 @@
          overflow: scroll;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    width: 1000px;
 }
 
 .Table th {

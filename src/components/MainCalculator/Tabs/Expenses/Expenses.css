@@ -18,6 +18,9 @@
 
 .row {
     overflow: scroll;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 1000px;
 }
 
 .col {
@@ -28,10 +31,6 @@
     font-size: 18px;
     color: rgb(220, 53, 69);
     white-space: nowrap;
-    overflow: hidden;
-     overflow: scroll;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
 }
 
 .Table th {

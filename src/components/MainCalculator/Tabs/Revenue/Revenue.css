@@ -4,14 +4,11 @@
     background: #e6f0e6;
 }
 
-.row {
-    overflow: scroll;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-}
-
 .col {
     margin: 10px auto !important;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 1000px;
 }
 
 /* Percentage Headers above tables */
