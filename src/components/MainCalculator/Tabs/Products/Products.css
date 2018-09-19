@@ -4,6 +4,7 @@
     width: 100%;
     background: #e3e5e8;
     text-align: left;
+    overflow: auto;
 }
 
 .Header {
@@ -19,16 +20,15 @@
 
 .row {
     overflow: scroll;
+     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .Table {
     font-size: 18px;
     white-space: nowrap;
-        overflow: hidden;
-        text-align: center;
-         overflow: scroll;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    text-align: center;
 }
 
 .Table th {

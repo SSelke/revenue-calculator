@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     background: #fde9e8;
+    overflow: auto;
 }
 
 .Header {
