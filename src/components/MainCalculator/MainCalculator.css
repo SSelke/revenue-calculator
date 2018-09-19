@@ -3,7 +3,6 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: auto;
 }
 
 .List {
@@ -46,16 +45,9 @@ button:active, {
     border: none;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 1201px) {
     .MainContainer {
-        width: 100%;
-        margin: 0;
-    }
-}
-
-@media (min-width: 800px) {
-    .MainContainer {
-        width: 70%;
-        margin: 0 15%;
+        width: 80%;
+        margin: 0 10%;
     }
 }

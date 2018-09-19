@@ -2,16 +2,18 @@
     height: 100%;
     width: 100%;
     background: #e6f0e6;
+    overflow: auto;
 }
 
 .row {
-    overflow: scroll;
-    overflow-x: scroll;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
 
 .col {
     margin: 10px auto !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Percentage Headers above tables */
@@ -53,10 +55,6 @@
 .Table {
     font-size: 18px;
     white-space: nowrap;
-        overflow: hidden;
-     overflow: scroll;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
 }
 
 .Table th {
