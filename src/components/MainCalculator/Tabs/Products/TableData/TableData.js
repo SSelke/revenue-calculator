@@ -24,7 +24,7 @@ const tableData = (props) => {
             </td>
             <td className={classes.Data}>
                 <span>
-                    <input type="number" style={{ width: '40px', textAlign: 'right' }}
+                    <input type="number" style={{ width: '60px', textAlign: 'right' }}
                         step="0.25"
                         value={props.time}
                         onChange={(event) => props.updateTime(event.target.value, props.index, props.type)} />
