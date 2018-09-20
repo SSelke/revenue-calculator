@@ -4,48 +4,111 @@ import classes from './Hours.css';
 
 class Hours extends Component {
     state = {
-        hoursPerDay: 0,
-        daysPerWeek: 0,
-        bill: 0,
-        vacation: 0,
-        sick: 0,
-        holidays: 0
+        totalHours: 1128,
+        hoursPerDay: 6,
+        daysPerWeek: 4,
+        billable: 75,
+        vacation: 5,
+        sick: 5,
+        holidays: 10
     }
 
-    updateHours = (event, item) => {
-        switch(item) {
-            case 'h/d':
-            this.setState({hoursPerDay: event.target.value});
-            break;
-        }
+    updateHours = (evt) => {
+         if (evt.target.value < 0) {
+            return;
+         }
+         console.log(evt.target.value);
+        this.setState({ hoursPerDay: evt.target.value }, () => {
+            this.updateTotalHours();
+        });
     }
+    updateDays = (evt) => {
+        if (evt.target.value < 0) {
+            return;
+        }
+        console.log(evt.target.value);
+        this.setState({ daysPerWeek: evt.target.value }, () => {
+            this.updateTotalHours();
+        });
+    }
+    updateBillable = (evt) => {
+        if (evt.target.value < 0) {
+            return;
+        }
+        console.log(evt.target.value);
+        this.setState({ billable: evt.target.value }, () => {
+            this.updateTotalHours();
+        });
+    }
+    updateVacation = (evt) => {
+        if (evt.target.value < 0) {
+            return;
+        }
+        console.log(evt.target.value);
+        this.setState({ vacation: evt.target.value }, () => {
+            this.updateTotalHours();
+        });
+    }
+    updateSick = (evt) => {
+        if (evt.target.value < 0) {
+            return;
+        }
+        console.log(evt.target.value);
+        this.setState({ sick: evt.target.value }, () => {
+            this.updateTotalHours();
+        });
+    }
+    updateHolidays = (evt) => {
+        if (evt.target.value < 0) {
+            return;
+        }
+        console.log(evt.target.value);
+        this.setState({ holidays: evt.target.value }, () => {
+            this.updateTotalHours();
+        });
+    }
+
+    updateTotalHours = () => {
+        let totalHours = 0;
+        let hours = this.state.hoursPerDay;
+        let days = this.state.daysPerWeek;
+        let billable = this.state.billable;
+        let vacation = this.state.vacation * hours;
+        let holiday = this.state.holidays * hours;
+        let sick = this.state.sick * hours;
+
+        totalHours = (((hours * days) * 52) - vacation - holiday - sick);
+
+        this.setState({totalHours: totalHours});
+    }
+
     render () {
         return (
             <div className={classes.Hours}>
                 <Grid className={classes.Grid}>
                     <Row className={classes.Row}>
                         <Col className={classes.Col}>
-                            <h1>Yearly Available Hours: 894</h1>
+                            <h1>Yearly Available Hours: {this.state.totalHours}</h1>
                         </Col>
                     </Row>
                     <Row className={classes.Row}>
                         <Col xs={6} md={4} className={classes.Col}>
-                            <div>Hours/Day:<input type="text" value={this.state.hoursPerDay} onChange={() => this.updateHours('h/d')}/></div>
+                            <div>Hours/Day:<input type="number" value={this.state.hoursPerDay} onChange={evt => this.updateHours(evt)}/></div>
                         </Col>
                         <Col xs={6} md={4} className={classes.Col}>
-                            <div>Days/Week:<input type="text" placeholder="5" onChange={this.updateHours('d/w')}/></div>
+                            <div>Days/Week:<input type="number" value={this.state.daysPerWeek} onChange={evt => this.updateDays(evt)}/></div>
                         </Col>
                         <Col xs={6} md={4} className={classes.Col}>
-                            <div>Billable:<input type="text" placeholder="75" onChange={this.updateHours('billable')}/><span>%</span></div>
+                            <div>Billable:<input type="number" value={this.state.billable}  onChange={evt => this.updateBillable(evt)}/><span>%</span></div>
                         </Col>
                         <Col xs={6} md={4} className={classes.Col}>
-                            <div>Vacation:<input type="text" placeholder="7" onChange={this.updateHours('vacation')}/></div>
+                            <div>Vacation:<input type="number" value={this.state.vacation} onChange={evt => this.updateVacation(evt)}/></div>
                         </Col>
                         <Col xs={6} md={4} className={classes.Col}>
-                            <div>Sick:<input type="text" placeholder="5" onChange={this.updateHours('sick')}/></div>
+                            <div>Sick:<input type="number" value={this.state.sick} onChange={evt => this.updateSick(evt)}/></div>
                         </Col>
                         <Col xs={6} md={4} className={classes.Col}>
-                            <div>Holidays:<input type="text" placeholder="10" className={classes.Placeholder} onChange={this.updateHours('holidays')}/></div>
+                            <div>Holidays:<input type="number" value={this.state.holidays}  className={classes.Placeholder} onChange={evt => this.updateHolidays(evt)}/></div>
                         </Col>
                     </Row>
                 </Grid>
