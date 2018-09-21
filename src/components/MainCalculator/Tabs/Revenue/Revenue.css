@@ -5,6 +5,21 @@
     overflow: auto;
 }
 
+.Revenue input[type=number]::-webkit-inner-spin-button,
+.Revenue input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.Revenue input {
+    -moz-appearance: textfield;
+}
+
+.Revenue input:active,
+.Revenue input:focus {
+    -moz-appearance: number-input;
+}
+
 .row {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
@@ -38,12 +53,6 @@
 .Percentage input:focus,
 .Percentage input:active {
    outline: none;
-}
-
-.Percentage input[type=number]::-webkit-inner-spin-button,
-.Percentage input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0 !important;
 }
 
 .Percentage span {
@@ -91,11 +100,6 @@
     border-bottom: 3px solid green;
 }
 
-.Projection input[type=number]::-webkit-inner-spin-button,
-.Projection input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0 !important;
-}
 
 .Projection span {
     font-size: 22px;
