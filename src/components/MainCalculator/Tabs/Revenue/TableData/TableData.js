@@ -17,13 +17,6 @@ const tableData = (props) => {
                                        onChange={(event) => props.productUpdate(event.target.value, props.index)} />
                 </td>
                 <td className={classes.Data}>
-                    <span style={{ marginLeft: '58px' }}>$
-                        <input type="number" style={{ width: '100px', textAlign: 'left' }}
-                                                value={cost}
-                                                onChange={(event) => props.updateCost(event.target.value, props.index)} />
-                    </span>
-                </td>
-                <td className={classes.Data}>
                     <span>
                         <input type="number" style={{ width: '50px', textAlign: 'right' }}
                                              value={props.percentage} 

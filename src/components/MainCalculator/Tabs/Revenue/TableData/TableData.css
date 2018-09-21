@@ -9,8 +9,21 @@
 
 .Data input {
     width: 200px;
+    -moz-appearance: textfield;
     text-align: center;
     background: none;
     border: none;
     font-size: 18px;
+}
+
+.Data input:active,
+.Data input:focus {
+    -moz-appearance: number-input;
+}
+
+
+.Data input[type=number]::-webkit-inner-spin-button,
+.Data input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+   margin: 0 !important;
 }

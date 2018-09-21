@@ -304,20 +304,19 @@ class Revenue extends Component {
                         <Col className={classes.col} style={{margin: 0}}  xs={12}>
                             <div className={classes.Percentage}>
                                 <input type="number" onChange={this.productPercentageHandler} value={this.state.products_percentage}/> %
-                                <span className={classes.Title}>One-Time Products</span>
+                                <span>${one_time_products.toLocaleString()}</span>
                             </div>
-                            <span className={classes.OneTime}>${one_time_products.toLocaleString()}</span>
+                            <span className={classes.OneTime}>One-Time Products</span>
                             <Table striped bordered className={classes.Table}>
                                 <thead>
                                     <tr>
                                         <th>Delete</th>
                                         <th>Product</th>
-                                        <th>Price</th>
                                         <th>%</th>
-                                        <th>Amount/Mo</th>
-                                        <th>Total/Mo</th>
-                                        <th>Amount/Year</th>
-                                        <th>Total/Year</th>
+                                        <th>#/Mo</th>
+                                        <th>$/Mo</th>
+                                        <th>#/Year</th>
+                                        <th>$/Year</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -326,7 +325,7 @@ class Revenue extends Component {
                                         <td style={{ margin: '0 auto' }}>
                                             <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall" onClick={() => this.addRowHandler('product')}>Add</Button>
                                         </td>
-                                        <td colSpan={2} style={{paddingRight: '30px'}}>Totals:</td>
+                                        <td style={{paddingRight: '30px'}}>Totals:</td>
                                         <td>{totalPercentage}%</td>
                                         <td>{amountSoldPerMonth}</td>
                                         <td>${totalPerMonth.toLocaleString()}</td>
@@ -339,20 +338,19 @@ class Revenue extends Component {
                         <Col className={classes.col} xs={12}>
                             <div className={classes.Percentage}>
                                 <input type="number" onChange={this.retainerPercentageHandler} value={this.state.retainer_percentage} /> %
-                                <span>Retainer Packages</span>
+                                <span>${retainerPackages.toLocaleString()}</span>
                             </div>
-                            <span className={classes.OneTime}>${retainerPackages.toLocaleString()}</span>
+                            <span className={classes.OneTime}>Retainer Packages</span>
                             <Table striped bordered className={classes.Table}>
                                 <thead>
                                     <tr>
                                         <th>Delete</th>
                                         <th>Package</th>
-                                        <th>Price</th>
                                         <th>%</th>
-                                        <th>Amount/Mo</th>
-                                        <th>Total/Mo</th>
-                                        <th>Amount/Year</th>
-                                        <th>Total/Year</th>
+                                        <th>#/Mo</th>
+                                        <th>$/Mo</th>
+                                        <th>#/Year</th>
+                                        <th>$/Year</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -361,7 +359,7 @@ class Revenue extends Component {
                                         <td style={{ margin: '0 auto' }}>
                                             <Button style={{ width: '60px' }} bsStyle="success" bsSize="xsmall" onClick={() => this.addRowHandler('package')}>Add</Button>
                                         </td>
-                                        <td colSpan={2} style={{paddingRight: '30px' }}>Totals:</td>
+                                        <td style={{paddingRight: '30px' }}>Totals:</td>
                                         <td>{totalPercentageRev}%</td>
                                         <td>{amountSoldPerMonthRev}</td>
                                         <td>${totalPerMonthRev.toLocaleString()}</td>

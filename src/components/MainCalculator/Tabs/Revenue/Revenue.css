@@ -40,6 +40,12 @@
    outline: none;
 }
 
+.Percentage input[type=number]::-webkit-inner-spin-button,
+.Percentage input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
 .Percentage span {
     margin-left: 20px;
 }
@@ -83,6 +89,12 @@
     border: none;
     padding-left: 0;
     border-bottom: 3px solid green;
+}
+
+.Projection input[type=number]::-webkit-inner-spin-button,
+.Projection input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
 }
 
 .Projection span {

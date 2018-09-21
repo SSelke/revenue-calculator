@@ -14,7 +14,7 @@
 .List li {
     list-style: none;
     font-size: 18px;
-    width: 33.33%;
+    width: 25%;
     height: 44px;
     line-height: 44px;
     display: inline-block;
@@ -23,13 +23,16 @@
 }
 
 .List li:nth-child(1) {
-    background: #28a745;
+    background: #000;
 }
 .List li:nth-child(2){
     background: #dc3545;
 }
 .List li:nth-child(3) {
-    background: #000;
+    background: #28a745;
+}
+.List li:nth-child(4) {
+    background: red;
 }
 
 button {
